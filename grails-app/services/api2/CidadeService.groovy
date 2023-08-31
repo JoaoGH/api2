@@ -29,4 +29,15 @@ class CidadeService implements ServletAttributes {
 
         return retorno
     }
+
+    Map update(CidadeCommand command) {
+        Map retorno = [success: true]
+
+        Cidade cidade = Cidade.get(params.id as Long)
+        cidade.nome = command.nome
+        cidade.save(flush: true)
+
+        return retorno
+    }
+
 }
