@@ -28,9 +28,16 @@ class CidadeController {
         respond(retorno)
     }
 
-    def update() {}
+    def update(CidadeCommand command) {
+        Map retorno = cidadeService.update(command)
+        respond(retorno)
+    }
 
     def delete() {}
 
     def get() {}
+
+    def handleNullPointerException(NullPointerException e) {
+        respond([message: e.getMessage() ?: "NullPointerException"], status: 400)
+    }
 }
