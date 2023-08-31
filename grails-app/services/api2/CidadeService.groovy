@@ -18,4 +18,15 @@ class CidadeService implements ServletAttributes {
 
         return retorno
     }
+
+    Map list() {
+        Map retorno = [:]
+
+        List<Cidade> cidadeList = Cidade.list()
+
+        retorno.total = cidadeList.size()
+        retorno.records = cidadeList
+
+        return retorno
+    }
 }

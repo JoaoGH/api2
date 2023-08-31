@@ -23,7 +23,10 @@ class CidadeController {
         respond(retorno)
     }
 
-    def list() {}
+    def list() {
+        Map retorno = cidadeService.list()
+        respond(retorno)
+    }
 
     def update() {}
 
