@@ -93,6 +93,7 @@ dataSource:
     pooled: true
     jmxExport: true
     driverClassName: 'oracle.jdbc.OracleDriver'
+    logSql: true
     username: 'ALUNO1'
     password: 'ALUNO1'
 
