@@ -65,4 +65,9 @@ class CidadeService implements ServletAttributes {
         return retorno
     }
 
+    Cidade get() {
+        Long id = Long.parseLong(params.id)
+        return Cidade.get(id)
+    }
+
 }

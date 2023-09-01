@@ -39,7 +39,10 @@ class CidadeController {
         respond(retorno)
     }
 
-    def get() {}
+    def get() {
+        Cidade retorno = cidadeService.get()
+        respond(retorno)
+    }
 
     def handleNullPointerException(NullPointerException e) {
         respond([message: e.getMessage() ?: "NullPointerException"], status: 400)
@@ -47,6 +50,10 @@ class CidadeController {
 
     def handleNotFoundException(NotFoundException e) {
         respond([message: e.getMessage()], status: 404)
+    }
+
+    def handleNumberFormatException(NumberFormatException e) {
+        respond([message: "Formato invalido"], status: 400)
     }
 
 }
