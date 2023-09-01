@@ -11,8 +11,9 @@ class FuncionarioService implements ServletAttributes {
 
         Funcionario funcionario = new Funcionario()
         funcionario.setNome(request.JSON.nome)
+        funcionario.setCidade(Cidade.get(request.JSON.cidadeId))
 
-        if (funcionario.hasErrors()) {
+        if (!funcionario.validate()) {
             retorno.success = false
             retorno.errors = funcionario.getErrors()
             return retorno
@@ -20,7 +21,7 @@ class FuncionarioService implements ServletAttributes {
 
         funcionario.save(flush: true)
 
-        retorno.registro = funcionario
+        retorno.registro = getShowRecord(funcionario)
 
         return retorno
     }
@@ -31,7 +32,11 @@ class FuncionarioService implements ServletAttributes {
         List<Funcionario> funcionarioList = Funcionario.createCriteria().list {}
 
         retorno.total = funcionarioList.size()
-        retorno.registro = funcionarioList
+
+        retorno.registro = []
+        for (Funcionario it : funcionarioList) {
+            retorno.registro << getShowRecord(it)
+        }
 
         return retorno
     }
@@ -44,9 +49,10 @@ class FuncionarioService implements ServletAttributes {
         }
 
         funcionario.setNome(request.JSON.nome)
+        funcionario.setCidade(Cidade.get(request.JSON.cidadeId))
         funcionario.save(flush: true)
 
-        retorno.registro = funcionario
+        retorno.registro = getShowRecord(funcionario)
 
         return retorno
     }
@@ -65,9 +71,20 @@ class FuncionarioService implements ServletAttributes {
 
         Funcionario funcionario = Funcionario.get(id)
 
-        retorno.registro = funcionario
+        retorno.registro = getShowRecord(funcionario)
 
         return retorno
+    }
+
+    private Map getShowRecord(Funcionario funcionario) {
+        return [
+                id: funcionario.id,
+                nome: funcionario.nome,
+                cidade: [
+                        id: funcionario.cidade.id,
+                        nome: funcionario.cidade.nome
+                ]
+        ]
     }
 
 }
