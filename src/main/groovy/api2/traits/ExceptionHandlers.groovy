@@ -16,4 +16,8 @@ trait ExceptionHandlers implements RestResponder {
     def handleNumberFormatException(NumberFormatException e) {
         respond([message: "Formato invalido"], status: 400)
     }
+
+    def handleException(Exception e) {
+        respond([message: "Contate o admin"], status: 400)
+    }
 }
