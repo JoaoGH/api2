@@ -28,4 +28,9 @@ class ReajusteSalarioController implements ExceptionHandlers {
         respond(retorno)
     }
 
+    def update() {
+        Map retorno = reajusteSalarioService.update()
+        respond(retorno)
+    }
+
 }
