@@ -49,6 +49,7 @@ class FuncionarioService implements ServletAttributes {
         }
 
         funcionario.setNome(request.JSON.nome)
+        funcionario.setCidade(Cidade.get(request.JSON.cidadeId))
         funcionario.save(flush: true)
 
         retorno.registro = getShowRecord(funcionario)
