@@ -69,6 +69,8 @@ dependencies {
     testImplementation "org.grails:grails-web-testing-support"
     testImplementation "org.grails:views-json-testing-support"
     testImplementation "org.hibernate.validator:hibernate-validator:6.1.7.Final"
+
+    implementation("com.oracle.database.jdbc:ojdbc8:21.8.0.0")
 }
 
 bootRun {
