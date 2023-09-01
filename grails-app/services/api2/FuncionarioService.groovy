@@ -71,7 +71,7 @@ class FuncionarioService implements ServletAttributes {
 
         Funcionario funcionario = Funcionario.get(id)
 
-        retorno.registro = funcionario
+        retorno.registro = getShowRecord(funcionario)
 
         return retorno
     }
