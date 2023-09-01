@@ -20,3 +20,14 @@ Projeto desenvolvido usando as seguintes tecnologias:
 ## Enunciado
 
 Para acessar o enunciado do desafio clique [aqui](./Desafio-2-Grails.md).
+
+## Conexão de banco de dados
+
+Para a execução é necessário conectar em um serviço de banco de dados pelo `application.yml`:
+
+```yml
+dataSource:
+  username: '<user>'
+  password: '<pass>'
+  url: '<url-data-base>'
+```
