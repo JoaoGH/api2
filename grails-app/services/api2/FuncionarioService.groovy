@@ -24,4 +24,16 @@ class FuncionarioService implements ServletAttributes {
 
         return retorno
     }
+
+    Map list() {
+        Map retorno = [success: true]
+
+        List<Funcionario> funcionarioList = Funcionario.createCriteria().list {}
+
+        retorno.total = funcionarioList.size()
+        retorno.registro = funcionarioList
+
+        return retorno
+    }
+
 }
