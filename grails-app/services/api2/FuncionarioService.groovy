@@ -21,7 +21,7 @@ class FuncionarioService implements ServletAttributes {
 
         funcionario.save(flush: true)
 
-        retorno.registro = funcionario
+        retorno.registro = getShowRecord(funcionario)
 
         return retorno
     }
@@ -32,7 +32,11 @@ class FuncionarioService implements ServletAttributes {
         List<Funcionario> funcionarioList = Funcionario.createCriteria().list {}
 
         retorno.total = funcionarioList.size()
-        retorno.registro = funcionarioList
+
+        retorno.registro = []
+        for (Funcionario it : funcionarioList) {
+            retorno.registro << getShowRecord(it)
+        }
 
         return retorno
     }
@@ -69,6 +73,17 @@ class FuncionarioService implements ServletAttributes {
         retorno.registro = funcionario
 
         return retorno
+    }
+
+    private Map getShowRecord(Funcionario funcionario) {
+        return [
+                id: funcionario.id,
+                nome: funcionario.nome,
+                cidade: [
+                        id: funcionario.cidade.id,
+                        nome: funcionario.cidade.nome
+                ]
+        ]
     }
 
 }
