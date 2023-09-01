@@ -1,11 +1,12 @@
 package api2
 
 import api2.command.CidadeCommand
+import api2.traits.ExceptionHandlers
 import grails.rest.*
 import grails.converters.*
 import javassist.NotFoundException
 
-class CidadeController {
+class CidadeController implements ExceptionHandlers {
 
     static responseFormats = ["json"]
 	static defaultAction = "get"
@@ -42,18 +43,6 @@ class CidadeController {
     def get() {
         Cidade retorno = cidadeService.get()
         respond(retorno)
-    }
-
-    def handleNullPointerException(NullPointerException e) {
-        respond([message: e.getMessage() ?: "NullPointerException"], status: 400)
-    }
-
-    def handleNotFoundException(NotFoundException e) {
-        respond([message: e.getMessage()], status: 404)
-    }
-
-    def handleNumberFormatException(NumberFormatException e) {
-        respond([message: "Formato invalido"], status: 400)
     }
 
 }
