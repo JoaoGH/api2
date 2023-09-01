@@ -60,4 +60,14 @@ class FuncionarioService implements ServletAttributes {
         return retorno
     }
 
+    Map get(Long id) {
+        Map retorno = [success: true]
+
+        Funcionario funcionario = Funcionario.get(id)
+
+        retorno.registro = funcionario
+
+        return retorno
+    }
+
 }
