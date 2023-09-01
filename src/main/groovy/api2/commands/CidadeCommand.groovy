@@ -1,4 +1,4 @@
-package api2.command
+package api2.commands
 
 import grails.validation.Validateable
 

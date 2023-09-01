@@ -1,12 +1,10 @@
 package api2
 
-import api2.command.CidadeCommand
+import api2.commands.CidadeCommand
 import grails.gorm.transactions.Transactional
 import grails.web.api.ServletAttributes
 import javassist.NotFoundException
 import org.springframework.dao.DataIntegrityViolationException
-
-import java.lang.reflect.InvocationTargetException
 
 @Transactional
 class CidadeService implements ServletAttributes {

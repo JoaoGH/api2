@@ -1,10 +1,7 @@
 package api2
 
-import api2.command.CidadeCommand
+import api2.commands.CidadeCommand
 import api2.traits.ExceptionHandlers
-import grails.rest.*
-import grails.converters.*
-import javassist.NotFoundException
 
 class CidadeController implements ExceptionHandlers {
 
