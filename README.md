@@ -9,3 +9,14 @@ Para mim, foi designada a tarefa de mentoria nos assuntos Java e Grails. Durante
 aulas/mentorias com os alunos, onde duvidas eram esclarecidas, também foram realizadas provas, onde a Prova 2 de Grails
 consistia no desenvolvimento dessa API.
 
+## Informações técnicas
+Projeto desenvolvido usando as seguintes tecnologias:
+
+* Grails 5
+* Java 11
+* Oracle para conexão de banco
+* Postman (para realizar as [requisições](./src/main/request/postman/Mentoria.postman_collection.json))
+
+## Enunciado
+
+Para acessar o enunciado do desafio clique [aqui](./Desafio-2-Grails.md).
