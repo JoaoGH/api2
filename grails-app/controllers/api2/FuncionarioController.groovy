@@ -10,7 +10,8 @@ class FuncionarioController implements ExceptionHandlers {
             save: "POST",
             list: "GET",
             update: "PUT",
-            delete: "DELETE"
+            delete: "DELETE",
+            get: "GET"
     ]
 
     FuncionarioService funcionarioService
@@ -32,6 +33,11 @@ class FuncionarioController implements ExceptionHandlers {
 
     def delete() {
         Map retorno = funcionarioService.delete()
+        respond(retorno)
+    }
+
+    def get(Long id) {
+        Map retorno = funcionarioService.get(id)
         respond(retorno)
     }
 
