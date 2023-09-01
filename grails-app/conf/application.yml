@@ -94,14 +94,14 @@ dataSource:
     jmxExport: true
     driverClassName: 'oracle.jdbc.OracleDriver'
     logSql: true
-    username: 'ALUNO1'
-    password: 'ALUNO1'
+    username: ''
+    password: ''
 
 environments:
     development:
         dataSource:
             dbCreate: create-drop
-            url: jdbc:oracle:thin:@insoft-lnx4.insoft.local:1521:DESENV01
+            url: ''
     test:
         dataSource:
             dbCreate: update
