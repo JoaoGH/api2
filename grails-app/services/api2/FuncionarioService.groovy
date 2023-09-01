@@ -51,4 +51,13 @@ class FuncionarioService implements ServletAttributes {
         return retorno
     }
 
+    Map delete() {
+        Map retorno = [success: true]
+
+        Funcionario funcionario = Funcionario.get(Long.parseLong(params.id))
+        funcionario.delete(flush: true)
+
+        return retorno
+    }
+
 }
