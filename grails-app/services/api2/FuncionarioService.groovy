@@ -12,7 +12,7 @@ class FuncionarioService implements ServletAttributes {
         Funcionario funcionario = new Funcionario()
         funcionario.setNome(request.JSON.nome)
 
-        if (funcionario.hasErrors()) {
+        if (!funcionario.validate()) {
             retorno.success = false
             retorno.errors = funcionario.getErrors()
             return retorno
