@@ -3,6 +3,7 @@ package api2
 import api2.command.CidadeCommand
 import grails.rest.*
 import grails.converters.*
+import javassist.NotFoundException
 
 class CidadeController {
 
@@ -33,11 +34,19 @@ class CidadeController {
         respond(retorno)
     }
 
-    def delete() {}
+    def delete(Long id) {
+        Map retorno = cidadeService.delete(id)
+        respond(retorno)
+    }
 
     def get() {}
 
     def handleNullPointerException(NullPointerException e) {
         respond([message: e.getMessage() ?: "NullPointerException"], status: 400)
     }
+
+    def handleNotFoundException(NotFoundException e) {
+        respond([message: e.getMessage()], status: 404)
+    }
+
 }

@@ -3,6 +3,10 @@ package api2
 import api2.command.CidadeCommand
 import grails.gorm.transactions.Transactional
 import grails.web.api.ServletAttributes
+import javassist.NotFoundException
+import org.springframework.dao.DataIntegrityViolationException
+
+import java.lang.reflect.InvocationTargetException
 
 @Transactional
 class CidadeService implements ServletAttributes {
@@ -36,6 +40,27 @@ class CidadeService implements ServletAttributes {
         Cidade cidade = Cidade.get(params.id as Long)
         cidade.nome = command.nome
         cidade.save(flush: true)
+
+        return retorno
+    }
+
+    Map delete(Long id) {
+        Map retorno = [success: true]
+
+        Cidade cidade = Cidade.findById(id)
+
+        if (cidade) {
+            try {
+                cidade.delete(flush: true)
+            } catch (DataIntegrityViolationException e) {
+                retorno.success = false
+                retorno.message = "Registro associado para um funcionario."
+                retorno.error = e.getMessage()
+            }
+        } else {
+            throw new NotFoundException("Não encontrada cidade para ${id}")
+        }
+
 
         return retorno
     }
