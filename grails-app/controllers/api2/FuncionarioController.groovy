@@ -7,7 +7,8 @@ class FuncionarioController implements ExceptionHandlers {
     static responseFormats = ['json']
     static defaultAction = "get"
     static allowedMethods = [
-            save: "POST"
+            save: "POST",
+            list: "GET"
     ]
 
     FuncionarioService funcionarioService
@@ -17,10 +18,9 @@ class FuncionarioController implements ExceptionHandlers {
         respond(retorno)
     }
 
-    def update() {}
-
-    def delete() {}
-
-    def get() {}
+    def list() {
+        Map retorno = funcionarioService.list()
+        respond(retorno)
+    }
 
 }
