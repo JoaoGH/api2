@@ -47,4 +47,19 @@ class ReajusteSalarioService implements ServletAttributes {
         ]
     }
 
+    Map list() {
+        Map retorno = [:]
+
+        List<ReajusteSalario> reajusteSalarioList = ReajusteSalario.findAll()
+
+        retorno.total = reajusteSalarioList.size()
+        retorno.registros = []
+
+        reajusteSalarioList.each {
+            retorno.registros << getShowRecord(it)
+        }
+
+        return retorno
+    }
+
 }

@@ -22,4 +22,10 @@ class ReajusteSalarioController implements ExceptionHandlers {
         Map retorno = reajusteSalarioService.save()
         respond(retorno)
     }
+
+    def list() {
+        Map retorno = reajusteSalarioService.list()
+        respond(retorno)
+    }
+
 }
